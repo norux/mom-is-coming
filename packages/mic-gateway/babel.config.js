@@ -20,5 +20,13 @@ module.exports = {
         legacy: true,
       },
     ],
+    [
+      'module-resolver',
+      {
+        alias: {
+          '@': './src',
+        },
+      },
+    ],
   ],
 };

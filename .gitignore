@@ -2,12 +2,9 @@
 
 # dependencies
 **/node_modules
-.yarn/*
-!.yarn/cache
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
+
+# env properties
+**/.env
 
 # testing
 **/coverage
