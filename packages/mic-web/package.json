@@ -2,11 +2,12 @@
   "name": "mic-web",
   "version": "0.1.0",
   "scripts": {
-    "build": "webpack --config config/webpack.prod.conf.js",
-    "start": "webpack-dev-server --config config/webpack.dev.conf.js"
+    "build": "yarn g:webpack --config ./config/webpack.prod.conf.js",
+    "start": "yarn g:webpack-dev-server --config ./config/webpack.dev.conf.js"
   },
   "dependencies": {
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
   }
 }

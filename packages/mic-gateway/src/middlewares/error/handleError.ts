@@ -1,6 +1,4 @@
 export default function (error: any, req, res, next) {
-  console.error(error);
-
   if (res.headersSent) {
     return next(error);
   }

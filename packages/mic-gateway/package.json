@@ -2,7 +2,7 @@
   "name": "mic-gateway",
   "version": "0.1.0",
   "scripts": {
-    "build": "BABEL_ENV=production npx babel --extensions \".js,.ts,.tsx\" ./src --out-dir ./dist",
+    "build": "yarn g:babel --extensions \".js,.ts,.tsx\" ./src --out-dir ./dist",
     "dev": "node -r dotenv/config dist/server.js",
     "start": "yarn build && yarn dev"
   },
