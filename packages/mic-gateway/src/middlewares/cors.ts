@@ -4,6 +4,7 @@ export default function (req, res, next) {
   if (
     ALLOWS_DOMAINS.some(domain => {
       const regexp = new RegExp(`${domain}(?::\\d+)?$`);
+
       return regexp.test(req.headers.origin);
     })
   ) {

@@ -35,6 +35,9 @@ module.exports = {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
         loader: 'babel-loader',
         exclude: /(node_modules)/,
+        options: {
+          rootMode: 'upward',
+        },
       },
       {
         test: /\.scss$/,

@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { getDate } from '@/utils/date';
 
 const BAND_API_BASE_URL = 'https://openapi.band.us';
@@ -29,6 +30,7 @@ export default async function (req, res, next) {
 
     if (!attendanceBook) {
       req.app.locals.lastUpdated = new Date().getTime();
+
       return next();
     }
 
@@ -38,6 +40,7 @@ export default async function (req, res, next) {
       }
 
       acc.push(cur.slice(1).trim());
+
       return acc;
     }, []);
 

@@ -2,7 +2,8 @@
   "name": "mic-gateway",
   "version": "0.1.0",
   "scripts": {
-    "build": "yarn g:babel --extensions \".js,.ts,.tsx\" ./src --out-dir ./dist",
+    "version": "BABEL_ENV=production babel --help",
+    "build": "yarn g:babel --root-mode upward --extensions \".js,.ts,.tsx\" ./src --out-dir ./dist",
     "dev": "node -r dotenv/config dist/server.js",
     "start": "yarn build && yarn dev"
   },
@@ -10,9 +11,24 @@
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "date-fns": "^2.16.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http-errors": "^1.8.0",
     "morgan": "^1.10.0",
     "qs": "^6.9.4"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/runtime": "^7.12.5",
+    "@types/axios": "^0.14.0",
+    "@types/body-parser": "^1.19.0",
+    "@types/express": "^4.17.9",
+    "@types/express-serve-static-core": "^4.17.14",
+    "@types/http-errors": "^1.8.0",
+    "@types/morgan": "^1.9.2",
+    "@types/node": "^14.14.13",
+    "@types/qs": "^6.9.5",
+    "@types/serve-static": "^1.13.8",
+    "babel-plugin-module-resolver": "^4.0.0"
   }
 }

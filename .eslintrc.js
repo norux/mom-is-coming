@@ -28,8 +28,9 @@ module.exports = {
     browser: true,
     node: true,
   },
+  parser: '@typescript-eslint/parser',
   extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier/react'],
-  plugins: ['react', 'prettier', 'simple-import-sort'],
+  plugins: ['@typescript-eslint', 'react', 'prettier', 'simple-import-sort'],
   settings: {
     react: {
       pragma: 'React',

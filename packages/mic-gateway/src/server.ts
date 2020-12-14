@@ -1,6 +1,7 @@
 import http from 'http';
-import app from './app';
+
 import pkgJson from '../package.json';
+import app from './app';
 
 const port = (process.env as any).SERVER_PORT || '3000';
 

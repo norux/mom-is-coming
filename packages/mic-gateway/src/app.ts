@@ -1,12 +1,12 @@
 import express from 'express';
 import morgan from 'morgan';
 
-import version from './middlewares/version';
+import cors from './middlewares/cors';
 import handle404 from './middlewares/error/handle404';
 import handleError from './middlewares/error/handleError';
-import ignoreFavicon from './middlewares/ignore/favicon';
-import cors from './middlewares/cors';
 import fetchBandData from './middlewares/fetchBandData';
+import ignoreFavicon from './middlewares/ignore/favicon';
+import version from './middlewares/version';
 import routes from './routes';
 
 const app = express();
