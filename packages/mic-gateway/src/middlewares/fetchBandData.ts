@@ -34,7 +34,7 @@ export default async function (req, res, next) {
       return next();
     }
 
-    const attendees = attendanceBook.content.split('\n').reduce((acc, cur) => {
+    req.app.locals.attendees = attendanceBook.content.split('\n').reduce((acc, cur) => {
       if (cur[0] !== '-') {
         return acc;
       }
@@ -43,13 +43,6 @@ export default async function (req, res, next) {
 
       return acc;
     }, []);
-
-    req.app.locals.attendees = {
-      [today]: attendees,
-    };
-
-    console.log(req.app.locals.attendees);
-
     req.app.locals.lastUpdated = new Date().getTime();
 
     next();

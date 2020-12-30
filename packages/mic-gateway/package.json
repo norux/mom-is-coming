@@ -5,17 +5,21 @@
     "version": "BABEL_ENV=production babel --help",
     "build": "yarn g:babel --root-mode upward --extensions \".js,.ts,.tsx\" ./src --out-dir ./dist",
     "dev": "node -r dotenv/config dist/server.js",
-    "start": "yarn build && yarn dev"
+    "start": "yarn build && yarn dev",
+    "restart": "ts-node tools/restarter.ts"
   },
   "dependencies": {
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",
+    "cross-spawn": "^7.0.3",
     "date-fns": "^2.16.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "fs-extra": "^9.0.1",
     "http-errors": "^1.8.0",
     "morgan": "^1.10.0",
-    "qs": "^6.9.4"
+    "qs": "^6.9.4",
+    "ts-node": "^9.1.1"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.12.1",
@@ -24,6 +28,7 @@
     "@types/body-parser": "^1.19.0",
     "@types/express": "^4.17.9",
     "@types/express-serve-static-core": "^4.17.14",
+    "@types/fs-extra": "^9",
     "@types/http-errors": "^1.8.0",
     "@types/morgan": "^1.9.2",
     "@types/node": "^14.14.13",

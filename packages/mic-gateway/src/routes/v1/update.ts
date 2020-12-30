@@ -1,8 +1,8 @@
 import express from 'express';
 
-import v1 from './v1';
+import { update } from '@/controllers/update';
 const router = express.Router();
 
-router.use('/v1', v1);
+router.post('/', update);
 
 export default router;
