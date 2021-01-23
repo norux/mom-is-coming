@@ -16,6 +16,7 @@ app.locals.lastUpdated = 0;
 app.set('etag', false);
 app.set('x-powered-by', false);
 
+app.use(express.json());
 app.use(ignoreFavicon);
 
 app.use(morgan('combined'));

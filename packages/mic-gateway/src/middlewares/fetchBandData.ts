@@ -1,9 +1,7 @@
 import axios from 'axios';
 
+import { ALLOWED_MEMBER, BAND_API_BASE_URL, GetPostCommentResponse, GetPostsResponse, Paging } from '@/types/band';
 import { getDate } from '@/utils/date';
-
-const BAND_API_BASE_URL = 'https://openapi.band.us';
-const ALLOWED_MEMBER = ['leader', 'coleader'];
 
 export default async function (req, res, next) {
   if (
@@ -13,15 +11,16 @@ export default async function (req, res, next) {
     return next();
   }
 
-  const { data: posts } = await axios.get(`${BAND_API_BASE_URL}/v2/band/posts`, {
-    params: {
-      access_token: process.env.BAND_ACCESS_TOKEN,
-      band_key: process.env.BAND_KEY,
-    },
-  });
-
   try {
     req.app.locals.mutex = true;
+
+    const { data: posts } = await axios.get<GetPostsResponse>(`${BAND_API_BASE_URL}/v2/band/posts`, {
+      params: {
+        access_token: process.env.BAND_ACCESS_TOKEN,
+        band_key: process.env.BAND_KEY,
+      },
+    });
+
     const today = getDate(new Date());
     const attendanceBook = posts.result_data.items.find(
       item =>
@@ -34,7 +33,8 @@ export default async function (req, res, next) {
       return next();
     }
 
-    req.app.locals.attendees = attendanceBook.content.split('\n').reduce((acc, cur) => {
+    const { post_key, content } = attendanceBook;
+    req.app.locals.attendees = content.split('\n').reduce<string[]>((acc, cur) => {
       if (cur[0] !== '-') {
         return acc;
       }
@@ -43,6 +43,36 @@ export default async function (req, res, next) {
 
       return acc;
     }, []);
+
+    const pickUpChildren: any[] = [];
+    let nextParams: Paging = null;
+    do {
+      const { data: comments } = await axios.get<GetPostCommentResponse>(`${BAND_API_BASE_URL}/v2/band/post/comments`, {
+        params: nextParams ?? {
+          access_token: process.env.BAND_ACCESS_TOKEN,
+          band_key: process.env.BAND_KEY,
+          post_key,
+        },
+      });
+
+      const { items } = comments.result_data;
+      items.forEach(({ content, comment_key }) => {
+        for (const attendee of req.app.locals.attendees) {
+          if (new RegExp(attendee).test(content)) {
+            pickUpChildren.push({
+              attendee,
+              postKey: post_key,
+              commentKey: comment_key,
+            });
+            break;
+          }
+        }
+      });
+
+      nextParams = comments.result_data.paging.next_params;
+    } while (nextParams);
+
+    req.app.locals.pickUpChildren = pickUpChildren;
     req.app.locals.lastUpdated = new Date().getTime();
 
     next();

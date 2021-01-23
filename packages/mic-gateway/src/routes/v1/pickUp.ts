@@ -1,10 +1,9 @@
 import express from 'express';
 
-import { finishPickUpChildren, getPickUpChildren, registerPickUpChildren } from '@/controllers/pickUp';
+import { finishPickUpChildren, getPickUpChildren } from '@/controllers/pickUp';
 const router = express.Router();
 
 router.get('/', getPickUpChildren);
-router.post('/', registerPickUpChildren);
-router.delete('/', finishPickUpChildren);
+router.delete('/:postKey/:commentKey', finishPickUpChildren);
 
 export default router;
