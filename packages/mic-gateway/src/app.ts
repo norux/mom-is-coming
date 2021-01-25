@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
+import path from 'path';
 
 import cors from './middlewares/cors';
 import handle404 from './middlewares/error/handle404';
@@ -10,11 +11,11 @@ import version from './middlewares/version';
 import routes from './routes';
 
 const app = express();
-app.locals.attendees = {};
-app.locals.lastUpdated = 0;
 
 app.set('etag', false);
 app.set('x-powered-by', false);
+
+app.use(express.static(path.resolve(process.cwd(), '../mic-web/dist')));
 
 app.use(express.json());
 app.use(ignoreFavicon);

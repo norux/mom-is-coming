@@ -1,4 +1,5 @@
 import axios from 'axios';
+import createHttpError from 'http-errors';
 
 import { ALLOWED_MEMBER, BAND_API_BASE_URL, GetPostCommentResponse, GetPostsResponse, Paging } from '@/types/band';
 import { getDate } from '@/utils/date';
@@ -76,6 +77,8 @@ export default async function (req, res, next) {
     req.app.locals.lastUpdated = new Date().getTime();
 
     next();
+  } catch (e) {
+    next(createHttpError(e));
   } finally {
     req.app.locals.mutex = false;
   }

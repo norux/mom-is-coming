@@ -1,0 +1,40 @@
+
+.layout {
+  margin: 0 auto;
+  max-width: 1000px;
+
+  .error {
+    display: flex;
+    padding-top: 50px;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+  }
+
+  .font {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 500px;
+
+    .button {
+      flex: 1;
+      padding: 10px 15px;
+      border-radius: 6px;
+      border: solid 1px #e8e8e8;
+      font-size: 20px;
+      font-weight: bold;
+      color: #55555b;
+
+      &.green {
+        background: #27ac62;
+        color: #fff;
+      }
+
+      &.red {
+        background: #d93333;
+        color: #fff;
+      }
+    }
+  }
+}

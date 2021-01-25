@@ -40,8 +40,8 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.s?css$/,
+        use: [isEnvDevelopment && 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader'].filter(Boolean),
       },
       {
         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],

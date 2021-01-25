@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "scripts": {
     "build": "webpack --config ./config/webpack.prod.conf.js",
+    "build:watch": "BUILD_WATCH=true webpack --config ./config/webpack.prod.conf.js",
     "start": "webpack-dev-server --config ./config/webpack.dev.conf.js"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "swr": "^0.4.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.12.1",
@@ -19,10 +22,14 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.6",
+    "@types/sass": "^1",
     "babel-loader": "^8.2.2",
     "core-js": "^3.8.0",
     "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.5.0",
+    "postcss": "^8.2.4",
+    "postcss-loader": "^4.2.0",
+    "sass": "^1.32.5",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
