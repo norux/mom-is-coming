@@ -3,14 +3,15 @@ import React, { useCallback } from 'react';
 import { useFontSize } from '@/store/useFontSize';
 
 export function Font() {
-  const { data, mutate } = useFontSize();
+  const { mutate: setFontSize } = useFontSize();
   const plus = useCallback(() => {
-    console.log(data);
-    mutate(data + 2);
-  }, [mutate, data]);
+    setFontSize(10 + 2);
+  }, [setFontSize]);
   const minus = useCallback(() => {
-    mutate(data - 2);
-  }, [mutate, data]);
+    setFontSize(10 - 2);
+  }, [setFontSize]);
+
+  console.log('!');
 
   return (
     <div className="font">

@@ -1,15 +1,5 @@
-import useSWR from 'swr';
+import { useSharedState } from '@/hooks/useSharedState';
 
-let fontSize = 0;
 export function useFontSize() {
-  const { data = 0, mutate } = useSWR('state', () => fontSize);
-
-  return {
-    data,
-    mutate: size => {
-      fontSize = size;
-
-      return mutate();
-    },
-  };
+  return useSharedState('fontSize', 10);
 }
