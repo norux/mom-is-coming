@@ -5,7 +5,7 @@ import path from 'path';
 import cors from './middlewares/cors';
 import handle404 from './middlewares/error/handle404';
 import handleError from './middlewares/error/handleError';
-import fetchBandData from './middlewares/fetchBandData';
+import fetchSpreadSheet from './middlewares/fetchSpreadSheet';
 import ignoreFavicon from './middlewares/ignore/favicon';
 import version from './middlewares/version';
 import routes from './routes';
@@ -23,7 +23,8 @@ app.use(ignoreFavicon);
 app.use(morgan('combined'));
 app.use(cors);
 
-app.use(fetchBandData);
+// app.use(fetchBandData);
+app.use(fetchSpreadSheet);
 
 app.use('/version', version);
 app.use('/api', routes);

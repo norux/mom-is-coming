@@ -5,7 +5,6 @@ import { useFontSize } from '@/store/useFontSize';
 export function Font() {
   const { data, mutate } = useFontSize();
   const plus = useCallback(() => {
-    console.log(data);
     mutate(data + 2);
   }, [mutate, data]);
   const minus = useCallback(() => {

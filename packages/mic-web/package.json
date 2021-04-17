@@ -7,6 +7,7 @@
     "start": "webpack-dev-server --config ./config/webpack.dev.conf.js"
   },
   "dependencies": {
+    "@babel/runtime": "^7.12.5",
     "axios": "^0.21.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -16,7 +17,7 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-react": "^7.12.7",
-    "@babel/runtime": "^7.12.5",
+    "@babel/runtime-corejs3": "^7.13.10",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",

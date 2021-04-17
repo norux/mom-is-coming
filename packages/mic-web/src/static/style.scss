@@ -1,7 +1,11 @@
 
 .layout {
   margin: 0 auto;
+  height: 100vh;
   max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .error {
     display: flex;
@@ -15,7 +19,6 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
-    width: 500px;
 
     .button {
       flex: 1;
@@ -25,6 +28,7 @@
       font-size: 20px;
       font-weight: bold;
       color: #55555b;
+      width: 100px;
 
       &.green {
         background: #27ac62;
@@ -36,5 +40,118 @@
         color: #fff;
       }
     }
+  }
+  
+  .children {
+    margin-top: 20px;
+    width: 100%;
+    
+    .name {
+      padding: 10px 0;
+      margin-top: 50px;
+      text-align: center;
+      letter-spacing: 50px;
+      color: #fff;
+      animation: backgroundColorRotate 50s linear infinite;
+    }
+  }
+}
+
+@keyframes backgroundColorRotate {
+  0% {
+    background-color: #d65c97;
+  }
+  5% {
+    background-color: #5cd666;
+  }
+  10% {
+    background-color: #a55cd6;
+  }
+  15.0% {
+    background-color: #5c7cd6;
+  }
+  20% {
+    background-color: #d65c7a;
+  }
+  25% {
+    background-color: #81d65c;
+  }
+  30.0% {
+    background-color: #835cd6;
+  }
+  35% {
+    background-color: #685cd6;
+  }
+  40% {
+    background-color: #5c9dd6;
+  }
+  45% {
+    background-color: #5cd670;
+  }
+  50% {
+    background-color: #d6625c;
+  }
+  55.0% {
+    background-color: #d6835c;
+  }
+  60.0% {
+    background-color: #d6605c;
+  }
+  65% {
+    background-color: #be5cd6;
+  }
+  70% {
+    background-color: #5c8dd6;
+  }
+  75% {
+    background-color: #95d65c;
+  }
+  80% {
+    background-color: #d69d5c;
+  }
+  85.0% {
+    background-color: #d65c81;
+  }
+  90% {
+    background-color: #5cd666;
+  }
+  95% {
+    background-color: #d67e5c;
+  }
+  100% {
+    background-color: #64d65c;
+  }
+}
+
+.loading {
+  margin-top: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .loading-indicator {
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 5px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    border-top-color: rgba(0, 0, 0, 0.5);
+    animation: loading-indicator 1s ease-in-out infinite;
+    z-index: 100;
+  }
+  
+  .loading-description {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+@keyframes loading-indicator {
+  to {
+    transform: rotate(360deg);
   }
 }

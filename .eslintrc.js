@@ -6,8 +6,13 @@ module.exports = {
     'linebreak-style': ['error', 'unix'],
     'prefer-const': 'error',
     'no-var': 'error',
-    'no-unused-vars': 'warn',
     'no-console': 'warn',
+
+    // Use typescript-eslint rules instead eslint
+    'no-unused-vars': 'off',
+    'no-redeclare': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-redeclare': ['warn'],
 
     // React
     'react/display-name': 'off',
